@@ -13,20 +13,23 @@ const CountryPicker = ({ handleCountryChange }) => {
     fetchAPI();
   }, [setFetchedCountries]);
 
-  console.log(fetchedCountries);
   return (
     <FormControl className={styles.formControl}>
-      <NativeSelect
-        defaultValue=""
-        onChange={(e) => handleCountryChange(e.target.value)}
-      >
-        <option value="">Global</option>
-        {fetchedCountries.map((country, i) => (
-          <option value={country} key={i}>
-            {country}
-          </option>
-        ))}
-      </NativeSelect>
+      {fetchedCountries && fetchedCountries.length > 0 ? (
+        <NativeSelect
+          defaultValue=""
+          onChange={(e) => handleCountryChange(e.target.value)}
+        >
+          <option value="">Global</option>
+          {fetchedCountries.map((country, i) => (
+            <option value={country} key={i}>
+              {country}
+            </option>
+          ))}
+        </NativeSelect>
+      ) : (
+        <div>Loading countries...</div>
+      )}
     </FormControl>
   );
 };

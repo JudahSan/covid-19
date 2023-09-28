@@ -3,4 +3,4 @@
 # Technology
 * Hooks, 
 * Material UI, 
-* Charts js)
+* Charts js
